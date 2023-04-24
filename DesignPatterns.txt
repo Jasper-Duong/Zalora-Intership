@@ -1,0 +1,82 @@
+- What?
+  - Repeating structure of design/architecture of software.
+  - Well known & good solutions -> Common problems
+- Design Principles
+  - Encapsulate parts that "vary" -> Won't affect the rest.
+  - Program to an interface, not an implementation.
+  - Composition >> Inheritance (HAS-A >> IS-A)
+    - More flexibility: Change behavior at runtime
+    - Encapsulate behaviors -> 1 family algo
+
+ - Types
+  - Creational
+    - Singleton
+      - Why?
+        - Need a single entity that is accessible anywhere
+        => Global variable? -> Break encapsulation
+        => Singleton
+      - What?
+        - A class 
+          - has ONLY 1 instance
+          - provides global access point
+    - Factory Method
+      - Why?
+        - Flexible instantiation (based on required class/types)
+        - Encapsulate instantiation
+      - What?
+        - Define 1 interface -> Create objects
+        - Allow subclasses choose class to instantiate
+        => Flexible & customized Instantiation
+      - Cons
+        - Too many params to construct
+        - Must pass all params (including optional - as null)
+        - Complex construction for complex objects
+        => Getter & setter for optional props
+        => Inconsistent state (some have all props, some miss a lot)
+    - Builder
+      - Why?
+        - Flexible constructor (Builder)
+        - Many diff params, cases in constructor
+        => 1 class responsible for construction -> Builder
+      - What?
+        - Separate construction & representation of complex objects
+        - Same construction -> Different representations
+      - How?
+        - Use many simple objects & step-wise approach
+        - Construct each object independently.
+  - Behavioral
+    - Observer
+      - Why?
+        - OOP -> Always observing objects' states & their interactions
+        - 1/many object(s) react to another's state change
+      - What?
+        - 1-many deps between objects
+        - Must notify all dependents of the emitter (Subject)
+        - Must allow update for dependents on emitter's state change
+        - Detach when not observing anymore
+      - How?
+        - Observer -register-> Subject
+        - Observers <-notification- Subject (change states)
+    - Strategy
+      - What?
+        - Define -> family of algorithms
+        - Encapsulate each
+        - Make them interchangeable
+        => algo change without affecting client (using them)
+  - Structural
+    - Adapter
+      - Why?
+        - Need classes implementing incompatible interfaces work together
+        - Ko change classes
+        => Middle interface -> Adapter
+      - What?
+        - Convert interface -> compatible with others
+        => Classes work together using these new compatible interfaces
+    - Facade
+      - Why?
+        - Too many objects => Tight coupling (system's classes <-> 3rd party lib)
+        => Need 1 unified interface -TO-> 1 set of subsystem's interfaces
+        => Facade
+      - What?
+        - Define 1 higher-level interface (Facade) -> subsystem easier to use
+        - Enable all objects -access-> Facade (Hide details)
